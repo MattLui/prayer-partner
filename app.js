@@ -61,6 +61,11 @@ const requiresAuthentication = (req, res, next) => {
   }
 };
 
+// Redirect start page - pp
+app.get("/pp", (req, res) => {
+  res.redirect("/categories");
+});
+
 // Redirect start page
 app.get("/", (req, res) => {
   res.redirect("/categories");

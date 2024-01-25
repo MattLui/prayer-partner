@@ -61,11 +61,6 @@ const requiresAuthentication = (req, res, next) => {
   }
 };
 
-//Temporary
-app.get('/pp', (req, res) => {
-  res.send('This is the /pp route.');
-});
-
 // Redirect start page
 app.get("/", (req, res) => {
   res.redirect("/categories");

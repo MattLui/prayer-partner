@@ -1,0 +1,23 @@
+extend layout
+
+block main
+  section#prayerrequests
+    header
+      h2 Editing '#{category.title}'
+      ul
+        li
+          form.delete(action=`/categories/${category.id}/delete` method="post")
+            button.delete(type="submit") Delete Category
+
+  form(action=`/categories/${category.id}/edit` method="post")
+    dl
+      dt
+        label Enter a new title for the list:
+      dd
+        input(type="text"
+              name="categoryTitle"
+              placeholder="Category Title"
+              value=categoryTitle || category.title)
+    fieldset.actions
+      input(type="submit" value="Save")
+      a(href=`/categories/${category.id}`) Cancel

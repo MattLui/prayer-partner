@@ -1,0 +1,23 @@
+extends layout
+
+block main
+  if categories === undefined || categories.length === 0
+    p You don't have any categories. Why not create one?
+  else
+    h1 Categories
+    ul#categories
+      each category in categories
+        li(class="")
+          a(href=`/categories/${category.id}`)
+            h2= category.title
+    
+  ul.pagination
+    - const totalPages = Math.ceil(numberOfItems / ITEMS_PER_PAGE)
+    - for (let page = 1; page <= totalPages; page += 1)
+      li
+        a(href=`?page=${page}` class=(page === currentPage ? "active" : ""))
+          = page
+
+block headerLinks
+  .actions
+    a.add(href="/categories/new") New Category

@@ -1,0 +1,21 @@
+extends layout
+
+block main
+  header
+    h1= `Editing '${username}'`
+
+  form(action=`/users/edit` method="post")
+    dl
+      dt
+        label(for="password") Update password:
+      dd
+        input(type="password" name="password" placeholder="password")
+
+    fieldset.actions
+      input(type="submit" value="Save")
+      a(href=`/categories`) Cancel
+
+  form.delete(action=`/users/delete` method="post")
+    fieldset.actions
+      input(type="submit" value="Delete Account")
+block signIn

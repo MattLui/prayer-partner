@@ -1,0 +1,27 @@
+extends layout
+
+block main
+  section#prayerrequests
+    header
+      h2= `Answered Prayer Requests for '${category.title}'`
+    if (category.answeredPrayerRequests.length) === 0
+      p No answered prayer requests in this category. Keep praying!
+    ul
+      each prayerRequest in category.answeredPrayerRequests
+        li
+          h3= prayerRequest.title
+          form.delete(action=`/categories/${category.id}/prayerrequests/${prayerRequest.id}/deleteanswered`
+                      method="post")
+            button Delete
+  section
+    ul.pagination
+      - const totalPages = Math.ceil(numberOfItems / ITEMS_PER_PAGE)
+      - for (let page = 1; page <= totalPages; page++)
+        li
+          a(href=`?page=${page}` class=(page === currentPage ? "active" : "page-number"))
+            = page
+
+    form(action=`/categories/${category.id}` method="get")
+      fieldset.actions
+        p= `Click below to return to your prayer requests for '${category.title}'`
+        input(type="submit" value="Return")

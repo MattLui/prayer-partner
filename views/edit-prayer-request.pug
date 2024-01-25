@@ -1,0 +1,19 @@
+extend layout
+
+block main
+  section#prayerrequests
+    header
+      h2 Editing '#{prayerRequest.title}'
+
+  form(action=`/categories/${category.id}/prayerrequests/${prayerRequest.id}/edit` method="post")
+    dl
+      dt
+        label Enter a new title for the prayer request:
+      dd
+        input(type="text"
+              name="prayerRequestTitle"
+              placeholder="Prayer Request Title"
+              value=prayerRequestTitle || prayerRequest.title)
+    fieldset.actions
+      input(type="submit" value="Save")
+      a(href=`/categories/${category.id}`) Cancel

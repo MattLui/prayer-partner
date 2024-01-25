@@ -1,0 +1,58 @@
+extends layout
+
+block main
+  section#prayerrequests
+    header
+      h2= `Prayer Requests for '${category.title}'`
+      ul
+        li
+          form(action=`/categories/${category.id}/edit` method="get")
+            button.edit(type="submit") Edit Category
+    if (category.prayerRequests.length) === 0
+      p No prayer requests in this category. Add one below.
+    ul
+      each prayerRequest in category.prayerRequests
+        li
+          h3= prayerRequest.title
+          form.answered(action=`/categories/${category.id}/prayerrequests/${prayerRequest.id}/answer`
+                    method="post")
+            button Answered
+
+          form.edit(action=`/categories/${category.id}/prayerrequests/${prayerRequest.id}/edit`
+                    method="get")
+            button Edit
+
+          form.delete(action=`/categories/${category.id}/prayerrequests/${prayerRequest.id}/delete`
+                      method="post")
+            button Delete
+  section
+    ul.pagination
+      - const totalPages = Math.ceil(numberOfItems / ITEMS_PER_PAGE)
+      - for (let page = 1; page <= totalPages; page += 1)
+        li
+          a(href=`?page=${page}` class=(page === currentPage ? "active" : ""))
+            = page
+    header 
+      h2 New Prayer Requests
+    form(action=`/categories/${category.id}/prayerrequests` method="post")
+      dl
+        dt
+          label Enter a new prayer request:
+        dd
+          input(type="text"
+                name="prayerRequestTitle"
+                placeholder="Prayer request"
+                value=prayerRequestTitle)
+      fieldset.actions
+        input(type="submit" value="Add")
+
+    header 
+      h2 Answered Prayer Requests
+    form(action=`/categories/${category.id}/answered` method="get")
+      p To see your answered prayer requests in this category, click the button below.
+      fieldset.actions 
+        input(type="submit" value="View")
+
+block headerLinks
+  .actions
+    a(href="/categories") All Categories

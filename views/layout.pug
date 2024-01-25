@@ -1,0 +1,38 @@
+doctype html
+
+html(lang="en-US")
+
+  head
+    title Prayer Partner
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans")
+    link(rel="stylesheet" href="/stylesheets/whitespace-reset.css")
+    link(rel="stylesheet" href="/stylesheets/application.css")
+    link(rel="icon" type="image/png" href="/images/prayer.png")
+    script(src="/javascripts/application.js")
+
+  body
+    header
+      h1 Prayer Partner
+      block headerLinks
+
+    main
+      - let kinds = Object.keys(flash || {});
+      if kinds.length > 0
+        ul
+          each kind in kinds
+            each message in flash[kind]
+              li.flash(class=kind)= message
+
+      block main
+
+    footer
+      block signIn
+        form(action="/users/signout" method="post")
+          fieldset.actions
+            p Signed in as #{username}
+            input(type="submit" value ="Sign Out")
+        form(action="/users/edit" method="get")
+          fieldset.actions
+            p Edit account:
+            input(type="submit" value="Edit")

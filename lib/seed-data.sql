@@ -1,0 +1,31 @@
+INSERT INTO categories (title, username)
+  VALUES ('Church', 'Matt'),
+         ('Country', 'Matt'),
+         ('Family', 'Matt'),
+         ('Friends', 'Matt'),
+         ('Personal', 'Matt'),
+         ('World', 'Matt'),
+         ('Personal', 'Taylor');
+
+INSERT INTO prayer_requests (title, answered, category_id, username)
+  VALUES ('Mom ''s upcoming surgery', FALSE, 3, 'Matt'),
+         ('Dad to get over illness', FALSE, 3, 'Matt'),
+         ('Sister to get into college', FALSE, 3, 'Matt'),
+         ('Uncle''s health', FALSE, 3, 'Matt'),
+         ('Grandma''s cancer', FALSE, 3, 'Matt'),
+         ('Cousin Brian''s work situation', FALSE, 3, 'Matt'),
+         ('Cousin Brianna''s job hunt', FALSE, 3, 'Matt'),
+         ('Sam - wife is pregnant', TRUE, 4, 'Matt'),
+         ('Roger - getting married', TRUE, 4, 'Matt'),
+         ('Paul - to get a job', FALSE, 4, 'Matt'),
+         ('Sarah - grieving over death of grandparent', FALSE, 4, 'Matt'),
+         ('Pass JS189', FALSE, 5, 'Matt'),
+         ('Get into Capstone', FALSE, 5, 'Matt'),
+         ('Pass JS109', TRUE, 5, 'Matt'),
+         ('Pass JS119', TRUE, 5, 'Matt'),
+         ('Pass JS129', TRUE, 5, 'Matt'),
+         ('Pass JS139', TRUE, 5, 'Matt'),
+         ('Pass JS171', TRUE, 5, 'Matt'),
+         ('Pass JS181', TRUE, 5, 'Matt'),
+         ('To stay beautiful', TRUE, 7, 'Taylor'),
+         ('To wipe the teardrops from my guitar', FALSE, 7, 'Taylor');
